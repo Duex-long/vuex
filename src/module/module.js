@@ -7,18 +7,18 @@ export default class Module {
     // Store some children item
     this._children = Object.create(null)
     // Store the origin module object which passed by programmer
-    this._rawModule = rawModule
-    const rawState = rawModule.state
+    this._rawModule = rawModule  // 源模块
+    const rawState = rawModule.state // 
 
     // Store the origin module's state
     this.state = (typeof rawState === 'function' ? rawState() : rawState) || {}
   }
 
-  get namespaced () {
+  get namespaced () { // 获取 namespaced 
     return !!this._rawModule.namespaced
   }
 
-  addChild (key, module) {
+  addChild (key, module) { // 添加子模块
     this._children[key] = module
   }
 
