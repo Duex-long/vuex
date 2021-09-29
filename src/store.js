@@ -22,11 +22,11 @@ export class Store {
 
     const {
       plugins = [],
-      strict = false
+      strict = false  // 默认配置
     } = options
-
-    // store internal state
-    this._committing = false
+     
+    // store internal state 初始化state
+    this._committing = false 
     this._actions = Object.create(null)
     this._actionSubscribers = []
     this._mutations = Object.create(null)
