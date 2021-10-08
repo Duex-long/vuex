@@ -3,7 +3,7 @@ import { assert, forEachValue } from '../util'
 
 export default class ModuleCollection {
   constructor (rawRootModule) {
-    // register root module (Vuex.Store options)
+    // register root module (Vuex.Store options)    ？ 注册根模块
     this.register([], rawRootModule, false)
   }
 
