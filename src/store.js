@@ -25,17 +25,17 @@ export class Store {
       strict = false  // 默认配置
     } = options
      
-    // store internal state 初始化state
-    this._committing = false 
-    this._actions = Object.create(null)
-    this._actionSubscribers = []
-    this._mutations = Object.create(null)
-    this._wrappedGetters = Object.create(null)
-    this._modules = new ModuleCollection(options)
-    this._modulesNamespaceMap = Object.create(null)
-    this._subscribers = []
-    this._watcherVM = new Vue()
-    this._makeLocalGettersCache = Object.create(null)
+    // store internal                                                    初始化state 
+    this._committing = false // ---------------------------------------------｜  
+    this._actions = Object.create(null) // ----------------------------------｜
+    this._actionSubscribers = [] // -----------------------------------------｜
+    this._mutations = Object.create(null) // --------------------------------｜
+    this._wrappedGetters = Object.create(null) // ---------------------------｜
+    this._modules = new ModuleCollection(options) // ------------------------｜ 模块收集 
+    this._modulesNamespaceMap = Object.create(null) // ----------------------｜
+    this._subscribers = [] // -----------------------------------------------｜
+    this._watcherVM = new Vue() // ------------------------------------------｜
+    this._makeLocalGettersCache = Object.create(null) // --------------------｜
 
     // bind commit and dispatch to self
     const store = this
