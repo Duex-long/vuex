@@ -7,7 +7,7 @@ export default class ModuleCollection {
     this.register([], rawRootModule, false) // ------------------------------用自身的方法进行根模块注册  
   }
 
-  get (path) {
+  get (path) { // -----------------------------------------------------------找到父模块
     return path.reduce((module, key) => {
       return module.getChild(key)
     }, this.root)
@@ -34,18 +34,18 @@ export default class ModuleCollection {
     if (path.length === 0) { // ------------------------------------------------判断path是不是空数组 如果是空则是根模块
       this.root = newModule
     } else { // ----------------------------------------------------------------找到父节点进行挂载
-      const parent = this.get(path.slice(0, -1))
-      parent.addChild(path[path.length - 1], newModule)
+      const parent = this.get(path.slice(0, -1)) //-----------------------------通过自身方法传入去除最后一个元素的数组
+      parent.addChild(path[path.length - 1], newModule) //----------------------找到父模块后挂载到父模块上
     }
 
-    // register nested modules
+    // register nested modules --------------------------------------------------注册嵌套模块
     if (rawModule.modules) {
       forEachValue(rawModule.modules, (rawChildModule, key) => {
         this.register(path.concat(key), rawChildModule, runtime)
       })
     }
   }
-
+  // - 卸载
   unregister (path) {
     const parent = this.get(path.slice(0, -1))
     const key = path[path.length - 1]
