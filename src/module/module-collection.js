@@ -4,7 +4,7 @@ import { assert, forEachValue } from '../util'
 export default class ModuleCollection {
   constructor (rawRootModule) {
     // register root module (Vuex.Store options)    ？ 注册根模块
-    this.register([], rawRootModule, false)
+    this.register([], rawRootModule, false) // ------------------------------用自身的方法进行根模块注册  
   }
 
   get (path) {
@@ -25,15 +25,15 @@ export default class ModuleCollection {
     update([], this.root, rawRootModule)
   }
 
-  register (path, rawModule, runtime = true) {
+  register (path, rawModule, runtime = true) { // ------------------------------注册模块 path:[],rawModule:options,初始配置runtime:boolean
     if (__DEV__) {
       assertRawModule(path, rawModule)
     }
-
-    const newModule = new Module(rawModule, runtime)
-    if (path.length === 0) {
+    
+    const newModule = new Module(rawModule, runtime) // ------------------------开始根模块注册 
+    if (path.length === 0) { // ------------------------------------------------判断path是不是空数组 如果是空则是根模块
       this.root = newModule
-    } else {
+    } else { // ----------------------------------------------------------------找到父节点进行挂载
       const parent = this.get(path.slice(0, -1))
       parent.addChild(path[path.length - 1], newModule)
     }
@@ -125,8 +125,8 @@ const assertTypes = {
   mutations: functionAssert,
   actions: objectAssert
 }
-
-function assertRawModule (path, rawModule) {
+ 
+function assertRawModule (path, rawModule) { // ----------------------------------验证源模块 assertRawModule 
   Object.keys(assertTypes).forEach(key => {
     if (!rawModule[key]) return
 
