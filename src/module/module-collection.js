@@ -149,3 +149,6 @@ function makeAssertionMessage (path, key, type, value, expected) {
   buf += ` is ${JSON.stringify(value)}.`
   return buf
 }
+
+
+//  传入配重后进行模块收集，
