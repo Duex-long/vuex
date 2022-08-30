@@ -54,8 +54,11 @@ async function main() {
     choices: tags
   })
 
+<<<<<<< HEAD
   console.log(tag)
 
+=======
+>>>>>>> 01f87f0c3d59d0796a2535719dfa8328d1af390d
   const { yes: tagOk } = await prompt({
     type: 'confirm',
     name: 'yes',

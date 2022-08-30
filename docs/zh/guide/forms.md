@@ -1,6 +1,6 @@
 # 表单处理
 
-<div class="scrimba"><a href="https://scrimba.com/p/pnyzgAP/cqKRgEC9" target="_blank" rel="noopener noreferrer">在 scrimba 上尝试这节课</a></div>
+<div class="scrimba"><a href="https://scrimba.com/p/pnyzgAP/cqKRgEC9" target="_blank" rel="noopener noreferrer">在 Scrimba 上尝试这节课</a></div>
 
 当在严格模式中使用 Vuex 时，在属于 Vuex 的 state 上使用 `v-model` 会比较棘手：
 
@@ -15,6 +15,7 @@
 ``` html
 <input :value="message" @input="updateMessage">
 ```
+
 ``` js
 // ...
 computed: {
@@ -40,13 +41,14 @@ mutations: {
 }
 ```
 
-### 双向绑定的计算属性
+## 双向绑定的计算属性
 
 必须承认，这样做比简单地使用“`v-model` + 局部状态”要啰嗦得多，并且也损失了一些 `v-model` 中很有用的特性。另一个方法是使用带有 setter 的双向绑定计算属性：
 
 ``` html
 <input v-model="message">
 ```
+
 ``` js
 // ...
 computed: {

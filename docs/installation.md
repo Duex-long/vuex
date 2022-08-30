@@ -2,10 +2,10 @@
 
 ## Direct Download / CDN
 
-[https://unpkg.com/vuex](https://unpkg.com/vuex)
+[https://unpkg.com/vuex@4](https://unpkg.com/vuex@4)
 
 <!--email_off-->
-[Unpkg.com](https://unpkg.com) provides NPM-based CDN links. The above link will always point to the latest release on NPM. You can also use a specific version/tag via URLs like `https://unpkg.com/vuex@2.0.0`.
+[Unpkg.com](https://unpkg.com) provides NPM-based CDN links. The above link will always point to the latest release on NPM. You can also use a specific version/tag via URLs like `https://unpkg.com/vuex@4.0.0/dist/vuex.global.js`.
 <!--/email_off-->
 
 Include `vuex` after Vue and it will install itself automatically:
@@ -18,12 +18,17 @@ Include `vuex` after Vue and it will install itself automatically:
 ## NPM
 
 ```bash
+<<<<<<< HEAD
 npm install vuex --save
+=======
+npm install vuex@next --save
+>>>>>>> 01f87f0c3d59d0796a2535719dfa8328d1af390d
 ```
 
 ## Yarn
 
 ```bash
+<<<<<<< HEAD
 yarn add vuex
 ```
 
@@ -63,6 +68,11 @@ Furthermore, add the below line into anywhere in your code before using Vuex:
 import 'es6-promise/auto'
 ```
 
+=======
+yarn add vuex@next --save
+```
+
+>>>>>>> 01f87f0c3d59d0796a2535719dfa8328d1af390d
 ## Dev Build
 
 You will have to clone directly from GitHub and build `vuex` yourself if you want to use the latest dev build.
@@ -70,6 +80,6 @@ You will have to clone directly from GitHub and build `vuex` yourself if you wan
 ```bash
 git clone https://github.com/vuejs/vuex.git node_modules/vuex
 cd node_modules/vuex
-npm install
-npm run build
+yarn
+yarn build
 ```

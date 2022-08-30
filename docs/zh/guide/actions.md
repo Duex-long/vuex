@@ -1,6 +1,6 @@
 # Action
 
-<div class="scrimba"><a href="https://scrimba.com/p/pnyzgAP/c6ggR3cG" target="_blank" rel="noopener noreferrer">在 scrimba 上尝试这节课</a></div>
+<div class="scrimba"><a href="https://scrimba.com/p/pnyzgAP/c6ggR3cG" target="_blank" rel="noopener noreferrer">在 Scrimba 上尝试这节课</a></div>
 
 Action 类似于 mutation，不同在于：
 
@@ -10,7 +10,7 @@ Action 类似于 mutation，不同在于：
 让我们来注册一个简单的 action：
 
 ``` js
-const store = new Vuex.Store({
+const store = createStore({
   state: {
     count: 0
   },
@@ -29,7 +29,7 @@ const store = new Vuex.Store({
 
 Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 `context.commit` 提交一个 mutation，或者通过 `context.state` 和 `context.getters` 来获取 state 和 getters。当我们在之后介绍到 [Modules](modules.md) 时，你就知道 context 对象为什么不是 store 实例本身了。
 
-实践中，我们会经常用到 ES2015 的 [参数解构](https://github.com/lukehoban/es6features#destructuring) 来简化代码（特别是我们需要调用 `commit` 很多次的时候）：
+实践中，我们会经常用到 ES2015 的[参数解构](https://github.com/lukehoban/es6features#destructuring)来简化代码（特别是我们需要调用 `commit` 很多次的时候）：
 
 ``` js
 actions: {
@@ -39,7 +39,7 @@ actions: {
 }
 ```
 
-### 分发 Action
+## 分发 Action
 
 Action 通过 `store.dispatch` 方法触发：
 
@@ -81,7 +81,8 @@ actions: {
   checkout ({ commit, state }, products) {
     // 把当前购物车的物品备份起来
     const savedCartItems = [...state.cart.added]
-    // 发出结账请求，然后乐观地清空购物车
+    // 发出结账请求
+    // 然后乐观地清空购物车
     commit(types.CHECKOUT_REQUEST)
     // 购物 API 接受一个成功回调和一个失败回调
     shop.buyProducts(
@@ -97,7 +98,7 @@ actions: {
 
 注意我们正在进行一系列的异步操作，并且通过提交 mutation 来记录 action 产生的副作用（即状态变更）。
 
-### 在组件中分发 Action
+## 在组件中分发 Action
 
 你在组件中使用 `this.$store.dispatch('xxx')` 分发 action，或者使用 `mapActions` 辅助函数将组件的 methods 映射为 `store.dispatch` 调用（需要先在根节点注入 `store`）：
 
@@ -120,7 +121,7 @@ export default {
 }
 ```
 
-### 组合 Action
+## 组合 Action
 
 Action 通常是异步的，那么如何知道 action 什么时候结束呢？更重要的是，我们如何才能组合多个 action，以处理更加复杂的异步流程？
 
